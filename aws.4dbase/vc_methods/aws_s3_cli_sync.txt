@@ -1,0 +1,23 @@
+//%attributes = {"lang":"en","invisible":true,"shared":true,"publishedWeb":true} comment added and reserved by 4D.
+C_TEXT($0)
+C_TEXT($1;$local_directory_path)// "/Users/james/Documents/backup/"
+C_TEXT($2;$s3_path)// "s3://bucket-name/destination-directory/"
+$cp:=Count parameters
+$continue:=False
+
+If ($cp>=2)
+$local_directory_path:=$1
+$s3_path:=$2
+$continue:=True
+End if 
+
+If ($continue)
+C_TEXT($in;$out)
+$aws_cli_path:=OB Get(aws_get_config ;"aws_cli_path")
+$progressid:=Progress New 
+Progress SET TITLE ($progressid;"Syncing to AWS.")
+Progress SET MESSAGE ($progressid;"Running AWS CLI...")
+LAUNCH EXTERNAL PROCESS($aws_cli_path+" s3 sync "+$local_directory_path+" "+$s3_path;$in;$out)
+Progress QUIT ($progressid)
+End if 
+

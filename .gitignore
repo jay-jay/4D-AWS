@@ -1,0 +1,17 @@
+config.json
+config-dev.json
+config-test.json
+aws.4dbase/Components
+aws.4dbase/vc_data
+aws.4dbase/vc_methods/Debug.txt
+aws.4dbase/aws.4DD
+aws.4dbase/aws.4DIndy
+aws.4dbase/aws.journal
+aws.4dbase/aws.Match
+aws.4dbase alias
+aws.4dbase/Logs/
+aws.4dbase/Preferences/BuildApp
+aws.4dbase/Resources/cache/
+Backup.xml
+*.4BK
+aws_Build/Compiled Database/aws.4dbase/Resources/config*json
