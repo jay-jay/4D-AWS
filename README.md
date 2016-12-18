@@ -11,6 +11,7 @@ AWS (Amazon Web Services) 4D Component
 5. Done
 
 ### AWS S3 Sync with CLI
+Sync local directory to AWS s3 directory
 ```
 Syntax: aws_s3_cli_sync(local_path ; s3_path)
 local_path (Format: /Users/username/Documents/Directory-to-sync/)
