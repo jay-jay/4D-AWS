@@ -1,0 +1,4 @@
+{
+	"environment" : "develop",
+	"aws_cli_path" : "/usr/local/bin/aws"
+}
