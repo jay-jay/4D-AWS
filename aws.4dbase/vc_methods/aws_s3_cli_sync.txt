@@ -19,5 +19,6 @@ Progress SET TITLE ($progressid;"Syncing to AWS.")
 Progress SET MESSAGE ($progressid;"Running AWS CLI...")
 LAUNCH EXTERNAL PROCESS($aws_cli_path+" s3 sync "+$local_directory_path+" "+$s3_path;$in;$out)
 Progress QUIT ($progressid)
+$0:=$out
 End if 
 
