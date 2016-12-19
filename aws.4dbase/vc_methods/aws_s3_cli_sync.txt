@@ -2,6 +2,7 @@
 C_TEXT($0)
 C_TEXT($1;$local_directory_path)// "/Users/james/Documents/backup/"
 C_TEXT($2;$s3_path)// "s3://bucket-name/destination-directory/"
+C_TEXT($3;$cli_options)
 $cp:=Count parameters
 $continue:=False
 
@@ -11,13 +12,19 @@ $s3_path:=$2
 $continue:=True
 End if 
 
+If ($cp>=3)
+$cli_options:=$3
+End if 
+
+
 If ($continue)
 C_TEXT($in;$out)
 $aws_cli_path:=OB Get(aws_get_config ;"aws_cli_path")
+$command:=$aws_cli_path+" s3 sync "+$local_directory_path+" "+$s3_path+" "+$cli_options;$in;$out
 $progressid:=Progress New 
 Progress SET TITLE ($progressid;"Syncing to AWS.")
-Progress SET MESSAGE ($progressid;"Running AWS CLI...")
-LAUNCH EXTERNAL PROCESS($aws_cli_path+" s3 sync "+$local_directory_path+" "+$s3_path;$in;$out)
+Progress SET MESSAGE ($progressid;"Running AWS CLI $ "+$command)
+LAUNCH EXTERNAL PROCESS($command)
 Progress QUIT ($progressid)
 $0:=$out
 End if 
