@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en"} comment added and reserved by 4D.
+//%attributes = {"lang":"en","invisible":true,"shared":true} comment added and reserved by 4D.
 C_TEXT($0;$1)
 C_TEXT($response)
 C_OBJECT($ob_slack;$ob_aws_response)

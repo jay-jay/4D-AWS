@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true,"shared":true,"publishedWeb":true} comment added and reserved by 4D.
+//%attributes = {"lang":"en","invisible":true,"shared":true} comment added and reserved by 4D.
 C_OBJECT($0)
 C_TEXT($1;$local_directory_path)// "/Users/james/Documents/backup/"
 C_TEXT($2;$s3_path)// "s3://bucket-name/destination-directory/"
