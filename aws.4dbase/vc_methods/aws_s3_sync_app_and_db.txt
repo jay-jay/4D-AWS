@@ -12,7 +12,7 @@ $prefix_slack:=Uppercase($environment)+"-"+$name
 C_TEXT($In;$Out)
 $db_backup_local_path:=OB Get(aws_config ;"s3_sync_db_backup_local_path")
 $db_backup_s3_path:=OB Get(aws_config ;"s3_sync_db_backup_remote_path")
-$db_s3_options:=OB Get(aws_config ;"s3_sync_db_options")
+$db_s3_options:=OB Get(aws_config ;"s3_sync_db_backup_options")
 $milliseconds:=Milliseconds
 $ob_aws_response:=aws_s3_cli_sync ($db_backup_local_path;$db_backup_s3_path;$db_s3_options)
 $total:=Milliseconds-$milliseconds
