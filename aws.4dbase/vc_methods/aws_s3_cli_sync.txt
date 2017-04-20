@@ -19,7 +19,7 @@ End if
 
 If ($continue)
 C_TEXT($in;$out;$error)
-$aws_cli_path:=OB Get(aws_get_config ;"aws_cli_path")
+$aws_cli_path:=OB Get(aws_config ;"aws_cli_path")
 $command:=$aws_cli_path+" s3 sync "+$local_directory_path+" "+$s3_path+" "+$cli_options
 $progressid:=Progress New 
 Progress SET TITLE ($progressid;"Syncing to AWS.")

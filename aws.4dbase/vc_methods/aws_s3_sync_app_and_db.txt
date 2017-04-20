@@ -1,0 +1,42 @@
+//%attributes = {"lang":"en"} comment added and reserved by 4D.
+C_TEXT($0;$1)
+C_TEXT($response)
+C_OBJECT($ob_slack;$ob_aws_response)
+C_TEXT($environment)
+$slack_webhook:=OB Get(aws_config ;"slack_webhook")
+$environment:=OB Get(aws_config ;"environment")
+$name:=OB Get(aws_config ;"name")
+$prefix_slack:=Uppercase($environment)+"-"+$name
+
+// Sync backup directory to s3
+C_TEXT($In;$Out)
+$db_backup_local_path:=OB Get(aws_config ;"s3_sync_db_backup_local_path")
+$db_backup_s3_path:=OB Get(aws_config ;"s3_sync_db_backup_remote_path")
+$db_s3_options:=OB Get(aws_config ;"s3_sync_db_options")
+$milliseconds:=Milliseconds
+$ob_aws_response:=aws_s3_cli_sync ($db_backup_local_path;$db_backup_s3_path;$db_s3_options)
+$total:=Milliseconds-$milliseconds
+If (OB Get($ob_aws_response;"error")="")
+OB SET($ob_slack;"text";"SUCCESS ("+$prefix_slack+"): DB Backup to AWS Successful. ("+String($total)+" milliseconds)")
+Else 
+OB SET($ob_slack;"text";"### ERROR ("+$prefix_slack+"): DB Backup error: "+OB Get($ob_aws_response;"error")+" ("+String($total)+" milliseconds)")
+End if 
+
+// Send status to #Slack
+$status:=HTTP Request(HTTP post method;$slack_webhook;$ob_slack;$response)
+
+// Sync App folder to S3
+$app_backup_local_path:=OB Get(aws_config ;"s3_sync_app_local_path")
+$app_backup_s3_path:=OB Get(aws_config ;"s3_sync_app_remote_path")
+$app_s3_options:=OB Get(aws_config ;"s3_sync_app_options")
+$milliseconds:=Milliseconds
+$ob_aws_response:=aws_s3_cli_sync ($app_backup_local_path;$app_backup_s3_path;$app_s3_options)
+$total:=Milliseconds-$milliseconds
+If (OB Get($ob_aws_response;"error")="")
+OB SET($ob_slack;"text";"SUCCESS ("+$prefix_slack+"): APP Backup to AWS Successful. ("+String($total)+" milliseconds)")
+Else 
+OB SET($ob_slack;"text";"### ERROR ("+$prefix_slack+"): APP Backup error: "+OB Get($ob_aws_response;"error")+" ("+String($total)+" milliseconds)")
+End if 
+
+// Send status to #Slack
+$status:=HTTP Request(HTTP post method;$slack_webhook;$ob_slack;$response)
