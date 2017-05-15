@@ -5,7 +5,7 @@ aws.4dbase/Components
 aws.4dbase/vc_data
 aws.4dbase/vc_methods/Debug.txt
 aws.4dbase/aws.4DD
-aws.4dbase/aws.4DIndy
+# aws.4dbase/aws.4DIndy # Always include 4DIndy in git
 aws.4dbase/aws.journal
 aws.4dbase/aws.Match
 aws.4dbase alias
