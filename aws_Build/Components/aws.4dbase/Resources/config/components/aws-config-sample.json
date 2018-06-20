@@ -1,0 +1,12 @@
+{
+	"name" : "YOUR-APP-NAME",
+	"environment" : "DEVELOP / STATGING / PRODUCTION / UP-TO-YOU",
+	"slack_webhook" : "SLACK-WEBHOOK--CHECK-SLACK-DOCUMENTATION",
+	"aws_cli_path" : "MACHINE-AWS-CLI-PATH USUALLY /usr/local/bin/aw",
+	"s3_sync_app_local_path" : "MACHINE-LOCAL-ABSOLUTE-PATH",
+	"s3_sync_app_remote_path" : "S3-ABSOLUTE-PATH s3://BUCKET-NAME/YOUR/DIR/PATH/",
+	"s3_sync_app_options" : "--exclude \"*.4DD\" --delete",
+	"s3_sync_db_backup_local_path" : "MACHINE-LOCAL-ABSOLUTE-PATH",
+	"s3_sync_db_backup_remote_path" : "S3-ABSOLUTE-PATH s3://BUCKET-NAME/YOUR/DIR/PATH/",
+	"s3_sync_db_backup_options" : "--exclude \".DS_Store\" --delete"
+}
