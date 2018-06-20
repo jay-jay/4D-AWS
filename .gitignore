@@ -1,6 +1,4 @@
-config.json
-config-dev.json
-config-test.json
+aws-config.json
 aws.4dbase/Components
 aws.4dbase/vc_data
 aws.4dbase/vc_methods/Debug.txt
@@ -14,5 +12,5 @@ aws.4dbase/Preferences/BuildApp
 aws.4dbase/Resources/cache/
 Backup.xml
 *.4BK
-aws_Build/Compiled Database/aws.4dbase/Resources/config*json
+aws_Build/Compiled Database/aws.4dbase/Resources/components/aws-config*json
 aws_Build/Components/aws.4dbase - Shortcut.lnk
