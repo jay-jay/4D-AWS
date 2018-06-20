@@ -1,0 +1,12 @@
+{
+	"name" : "james",
+	"environment" : "develop",
+	"slack_webhook" : "https://hooks.slack.com/services/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",
+	"aws_cli_path" : "/usr/local/bin/aws",
+	"s3_sync_app_local_path" : "/Users/james/Documents/CVS/4D/_Test_Sync_App/",
+	"s3_sync_app_remote_path" : "s3://backup-4d/app/james/",
+	"s3_sync_app_options" : "--delete",
+	"s3_sync_db_backup_local_path" : "/Users/james/Documents/CVS/4D/_Test_Sync_DB/",
+	"s3_sync_db_backup_remote_path" : "s3://backup-4d/db/james/",
+	"s3_sync_db_options" : "--delete"
+}

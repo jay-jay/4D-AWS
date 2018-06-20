@@ -1,34 +1,25 @@
-//%attributes = {"lang":"en","invisible":true,"shared":true,"publishedWeb":true} comment added and reserved by 4D.
-If (False)//Description
-// ----------------------------------------------------
-// Developer: James Borillo
-// Date and time: 18/12/16 
-// ----------------------------------------------------
-// Returns json config as object
+  //%attributes = {"invisible":true,"shared":true,"publishedWeb":true,"lang":"en"} comment added and reserved by 4D.
+If (False)  //Description
+	  // ----------------------------------------------------
+	  // Developer: James Borillo
+	  // Date and time: 18/12/16 
+	  // ----------------------------------------------------
+	  // Returns json config as object
 End if 
 
-If (True)//Declarations and initialization of variables
-C_OBJECT($0)
-C_OBJECT(o_aws_config)
-C_LONGINT($CP)
-C_TEXT($result)
+If (True)  //Declarations and initialization of variables
+	C_OBJECT($0)
+	C_OBJECT(o_aws_config)
+	C_LONGINT($CP)
+	C_TEXT($result)
 End if 
 
 If (OB Is defined(o_aws_config))
-// Do nothing
+	  // Do nothing
 Else 
-$path:=Get 4D folder(Current resources folder)
-
-Case of 
-: (Test path name($path+"config-dev.json")=Is a document)
-$jsonPath:=$path+"config-dev.json"
-: (Test path name($path+"config-test.json")=Is a document)
-$jsonPath:=$path+"config-test.json"
-Else 
-$jsonPath:=$path+"config.json"
-End case 
-
-$doc_txt:=Document to text($jsonPath)
-o_aws_config:=JSON Parse($doc_txt)
+	$path:=Get 4D folder(Current resources folder;*)
+	$configPath:=$path+"config"+Folder separator+"components"+Folder separator+"aws-config.json"
+	$doc_txt:=Document to text($configPath)
+	o_aws_config:=JSON Parse($doc_txt)
 End if 
 $0:=o_aws_config
